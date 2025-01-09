@@ -1,26 +1,38 @@
 /*
-  Ви створюєте гру, де є персонажі з різними ролями.
-  Зараз ви працюєте над класом Wizard, який має реалізовувати два інтерфейси - ICharacter та ISpellCaster.
+  You are creating a game where there are characters with different roles.
+  You are currently working on a Wizard class that should implement two interfaces - ICharacter and ISpellCaster.
 
-  Визначте інтерфейси ICharacter та ISpellCaster так, щоб вони відповідали вимогам класу Wizard. 
-  Інтерфейс ICharacter повинен включати властивості name і level, і навіть метод introduce і levelUp. 
-  Інтерфейс ISpellCaster повинен включати метод castSpell.
+  Define the ICharacter and ISpellCaster interfaces so that they meet the requirements of the Wizard class.
+  The ICharacter interface should include properties name and level, as well as methods introduce and levelUp.
+  The ISpellCaster interface should include a method castSpell.
 */
 
-// реалізація класу Wizard
+interface ICharacter {
+  name: string;
+  level: number;
+
+  introduce(phrase: string): void;
+  levelUp(): void;
+}
+
+interface ISpellCaster {
+  castSpell(): void;
+}
+
+// implementation of the Wizard class
 class Wizard implements ICharacter, ISpellCaster {
   constructor(public name: string, public level: number) {
     if (this.level < 1) {
-      throw new Error('Level too low');
+      throw new Error("Level too low");
     }
   }
 
   introduce(phrase: string): void {
-    console.log(phrase + ', ' + this.name);
+    console.log(phrase + ", " + this.name);
   }
 
   castSpell(): void {
-    console.log('Casting a spell, behold my power!');
+    console.log("Casting a spell, behold my power!");
   }
 
   levelUp(): void {
@@ -29,11 +41,11 @@ class Wizard implements ICharacter, ISpellCaster {
   }
 }
 
-// тестування класу
-const wizard = new Wizard('Merlin', 15);
+// class testing
+const wizard = new Wizard("Merlin", 15);
 
-wizard.introduce('I am the mighty wizard');
+wizard.introduce("I am the mighty wizard");
 wizard.castSpell();
-wizard.levelUp();  // Level up! New level is 16
+wizard.levelUp(); // Level up! New level is 16
 
 export {};

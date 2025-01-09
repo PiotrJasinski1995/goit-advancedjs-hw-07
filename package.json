@@ -4,6 +4,7 @@
   "description": "",
   "keywords": [],
   "author": "",
+  "type": "module",
   "license": "ISC",
   "dependencies": {
     "typescript": "^5.1.5"
